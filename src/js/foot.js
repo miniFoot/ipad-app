@@ -10,6 +10,24 @@ export default class Foot {
 
         this.socket = io( this.host )
 
+        this.player = [
+          this.one = {
+            name : null
+          },
+          this.two = {
+            name : null
+          },
+          this.three = {
+            name : null
+          },
+          this.four = {
+            name : null
+          }
+        ]
+
+        this.start = document.querySelector('#start')
+        this.call = document.querySelector('#call')
+
         this.init()
     }
 
@@ -19,17 +37,25 @@ export default class Foot {
         this.listenSockets()
     }
 
+    getId(){
+      this.players = document.querySelectorAll('.player-id')
+      for (var i = 0; i < this.players.length; i++) {
+        this.player[i].name = this.players[i].value
+      }
+    }
+
     listenSockets() {
         this.socket.on('newConnection', (data) => {
             console.log('Connected')
 
-            document.addEventListener( 'click', () => {
-              this.socket.emit( 'onNameChange', { name: 'Robin' } );
+            this.start.addEventListener( 'click', () => {
+              this.getId()
+              this.socket.emit('onNameChange', this.player)
             })
-        })
 
-        this.socket.on('goal', (data) => {
-            console.log('goal')
+            this.call.addEventListener( 'click', () => {
+              this.socket.emit('onPlayerCall', 'user called')
+            })
         })
     }
 }
