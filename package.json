@@ -1,0 +1,34 @@
+{
+  "name": "mini-foot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm install && npm run dev",
+    "dev": "grunt deploy && grunt",
+    "prod": "rm -rf dist/ && rm-rf tmp/ && npm install && grunt deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Robin Delaporte <delaporte.ro@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "babelify": "^6.3.0",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0",
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "^2.1.3",
+    "grunt-browserify": "^3.2.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-jade": "^0.14.0",
+    "grunt-contrib-stylus": "^0.20.0",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^1.0.0"
+  },
+  "dependencies": {
+    "domready": "^1.0.8",
+    "gsap": "^1.18.0",
+    "socket.io-client": "^1.4.4"
+  }
+}
