@@ -4,7 +4,7 @@ import Animation from './animation'
 export default class Foot {
     constructor() {
 
-        this.host = 'http://localhost:3000/'
+        this.host = 'http://localhost:8080/'
 
         this.animation = new Animation()
 
@@ -22,6 +22,10 @@ export default class Foot {
     listenSockets() {
         this.socket.on('newConnection', (data) => {
             console.log('Connected')
+
+            document.addEventListener( 'click', () => {
+              this.socket.emit( 'onNameChange', { name: 'Robin' } );
+            })
         })
 
         this.socket.on('goal', (data) => {

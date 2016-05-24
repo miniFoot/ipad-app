@@ -8,4 +8,39 @@ body
     overflow hidden
 
 body
-    background #101010
+    background #fff
+
+.container
+  height 100%
+  width 100%
+
+  .team
+    box-sizing border-box
+    width 50%
+    border 1px solid black
+    float left
+    text-transform uppercase
+
+    h2
+      position relative
+
+      &:before
+        content ""
+        position absolute
+        left -30px
+        top 50%
+        transform translateY(-50%)
+        height 20px
+        width 20px
+        background-color #D6D6D6
+        border-radius 10px
+
+    input
+      display block
+      background-color $grey
+      -webkit-appearance none
+      border none
+      margin 10px
+      padding 5px
+      border-radius 5px
+      position relative
