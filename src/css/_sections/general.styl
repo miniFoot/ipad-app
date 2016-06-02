@@ -8,7 +8,19 @@ body
     overflow hidden
 
 body
-    background #fff
+  background: linear-gradient(135deg, rgba(59,29,76,1) 0%, rgba(59,29,76,1) 22%, rgba(0,36,82,1) 100%)
+
+  .logo
+    height: 20vh
+    display: block
+    margin: 40px auto 0
+
+  h1
+    text-transform: uppercase
+    color: $grey
+    text-align: center
+    font-weight: lighter;
+    font-size: 26px;
 
 .container
   height 100%
@@ -17,30 +29,77 @@ body
   .team
     box-sizing border-box
     width 50%
-    border 1px solid black
+    margin-top: 80px
     float left
     text-transform uppercase
 
     h2
       position relative
+      text-align: center
+      width: 250px
+      margin: 0 auto 30px
+      color: $green
+
+      &.red
+        &:before
+          background-color: red
+      &.blue
+        &:before
+          background-color: blue
 
       &:before
         content ""
         position absolute
-        left -30px
+        left 0px
         top 50%
         transform translateY(-50%)
         height 20px
         width 20px
-        background-color #D6D6D6
         border-radius 10px
+        box-sizing: border-box
+        border: 3px solid white
 
-    input
-      display block
-      background-color $grey
-      -webkit-appearance none
-      border none
-      margin 10px
-      padding 5px
-      border-radius 5px
-      position relative
+    .input-block
+      width: 60%
+      margin: 0 auto
+      position: relative;
+
+      &:before, &:after
+        content: '@'
+        color: $green
+        position: absolute
+        left: -40px
+        top: 75px
+        font-size: 30px
+
+      &:after
+        top: 0
+
+      input
+        display block
+        background-color rgba(255, 255, 255, 0.5)
+        -webkit-appearance none
+        border none
+        margin 0 0 30px
+        padding 12px
+        width: 100%
+        box-sizing: border-box;
+        border-radius 8px
+        position relative
+
+  .submit-container
+    margin: 0 auto
+    display: table
+
+    .action
+      background-color: $green
+      padding: 20px
+      border: none
+      border-radius: 6px
+      font-family 'Gotham'
+      margin-top: 80px
+
+      &#call
+        color: white
+        background-color rgba(255, 255, 255, 0.7)
+        margin-right: 45px

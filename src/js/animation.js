@@ -7,7 +7,7 @@ export default class Animation {
     }
 
     displayDomElement() {
-        TweenMax.to( this.pageTitle, 0.5,
-        { autoAlpha: 1, y: '0%' } )
+      //  TweenMax.to( this.pageTitle, 0.5,
+        //{ autoAlpha: 1, y: '0%' } )
     }
 }

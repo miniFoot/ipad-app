@@ -1,0 +1,18 @@
+.game
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -120%)
+  color: $green
+  font-size: 160px
+  font-family 'Gotham'
+
+  opacity: 0
+
+  .score
+    display: inline
+
+  &.show-score
+    transform: translate(-50%, -80%)
+    opacity: 1
+    transition: all 0.6s ease

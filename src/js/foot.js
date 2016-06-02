@@ -51,6 +51,8 @@ export default class Foot {
             this.start.addEventListener( 'click', () => {
               this.getId()
               this.socket.emit('onNameChange', this.player)
+              document.querySelector('.container').classList.add('animated');
+              document.querySelector('.game').classList.add('show-score');
             })
 
             this.call.addEventListener( 'click', () => {

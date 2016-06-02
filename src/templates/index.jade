@@ -4,20 +4,29 @@ html
         include ./_sections/head
 
     body
-        h1#title Title
+        img(src="assets/images/logo.png", alt="logo").logo
+        h1 @babyoot
         
         .container
           .team
-            h2 Equipe Bleue
-            input(type="text").player-id
-            input(type="text").player-id
+            h2.blue équipe bleue
+            .input-block  
+              input(type="text").player-id
+              input(type="text").player-id
           .team
-            h2 Equipe Rouge
-            input(type="text").player-id
-            input(type="text").player-id
-        
-          input(type="submit" value="start")#start.action
-          input(type="submit" value="call")#call.action
+            h2.red équipe rouge
+            .input-block
+              input(type="text").player-id
+              input(type="text").player-id
+          
+          .submit-container
+            input(type="submit" value="APPELER LES JOUEURS")#call.action
+            input(type="submit" value="DÉMARRER LA PARTIE")#start.action
+            
+        .game
+          .score 10
+          span -
+          .score 10
         
 
     //- Scripts
