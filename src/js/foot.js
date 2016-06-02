@@ -27,6 +27,7 @@ export default class Foot {
 
         this.start = document.querySelector('#start')
         this.call = document.querySelector('#call')
+        this.stop = document.querySelector('#stop')
 
         this.init()
     }
@@ -35,6 +36,11 @@ export default class Foot {
         this.animation.displayDomElement()
 
         this.listenSockets()
+    }
+
+    animateItems() {
+      document.querySelector('.container').classList.toggle('animated');
+      document.querySelector('.game').classList.toggle('show-score');
     }
 
     getId(){
@@ -51,12 +57,16 @@ export default class Foot {
             this.start.addEventListener( 'click', () => {
               this.getId()
               this.socket.emit('onNameChange', this.player)
-              document.querySelector('.container').classList.add('animated');
-              document.querySelector('.game').classList.add('show-score');
+              this.animateItems()
             })
 
             this.call.addEventListener( 'click', () => {
               this.socket.emit('onPlayerCall', 'user called')
+            })
+
+            this.stop.addEventListener( 'click', () => {
+              this.socket.emit('onStopMatch', 'match stoped')
+              this.animateItems()
             })
         })
     }
