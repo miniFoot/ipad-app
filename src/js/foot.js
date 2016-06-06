@@ -131,6 +131,10 @@ export default class Foot {
       this.popin.classList.toggle('show')
 
       this.popin.querySelector('.punchline').innerHTML = msg
+
+      setTimeout(function () {
+        this.popin.classList.toggle('show')
+      }.bind(this), 5000);
     }
 
     closePopin(){
