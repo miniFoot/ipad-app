@@ -113,6 +113,7 @@ export default class Foot {
     animateItems() {
       document.querySelector('.container').classList.toggle('animated');
       document.querySelector('.game').classList.toggle('show-score');
+      document.querySelector('#timer').classList.toggle('show-timer');
     }
 
     getId(){
