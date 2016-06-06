@@ -19,14 +19,26 @@ html
               input(type="text").player-id
               input(type="text").player-id
           
+          .middle
+          
           .submit-container
             input(type="submit" value="APPELER LES JOUEURS")#call.action
             input(type="submit" value="DÉMARRER LA PARTIE")#start.action
             
         .game
-          .score 10
+          .score.blue 
+            span.number 0
+            .change
+              img(src="assets/images/minus.png", alt="change score").minus.blue
+              img(src="assets/images/plus.png", alt="change score").plus.blue
           span -
-          .score 10
+          .score.red
+            span.number 0
+            .change
+              img(src="assets/images/minus.png", alt="change score").minus.red
+              img(src="assets/images/plus.png", alt="change score").plus.red
+          
+          
           
           input(type="submit" value="ARRÊTER LA PARTIE")#stop.action
         

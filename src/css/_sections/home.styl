@@ -1,0 +1,100 @@
+.container
+  height 100%
+  width 100%
+  position: relative
+
+  // opacity: 0
+
+  .middle
+    position: absolute
+    background: url("../images/middle.png")
+    height: 210px
+    width: 50px
+    background-size: 100%
+    background-repeat: no-repeat
+    top: 70px
+    left: 50%
+    transform: translateX(-50%)
+    transition: all 0.6s ease
+
+  .team
+    box-sizing border-box
+    width 50%
+    margin-top: 80px
+    float left
+    text-transform uppercase
+
+    h2
+      position relative
+      text-align: center
+      width: 250px
+      margin: 0 auto 30px
+      color: $green
+      transition: all 0.6s ease
+      font-weight: normal
+
+      &.red
+        &:before
+          background-color: red
+      &.blue
+        &:before
+          background-color: blue
+
+      &:before
+        content ""
+        position absolute
+        left 0px
+        top 50%
+        transform translateY(-50%)
+        height 20px
+        width 20px
+        border-radius 10px
+        box-sizing: border-box
+        border: 3px solid white
+
+    .input-block
+      width: 60%
+      margin: 0 auto
+      position: relative;
+      transition: all 0.6s ease
+
+      &:before, &:after
+        content: '@'
+        color: $green
+        position: absolute
+        left: -40px
+        top: 75px
+        font-size: 30px
+
+      &:after
+        top: 0
+
+      input
+        display block
+        background-color rgba(255, 255, 255, 0.5)
+        -webkit-appearance none
+        border none
+        margin 0 0 30px
+        padding 12px
+        width: 100%
+        box-sizing: border-box;
+        border-radius 8px
+        position relative
+
+  .submit-container
+    margin: 0 auto
+    display: table
+    transition: all 0.6s ease
+
+    .action
+      background-color: $green
+      padding: 20px
+      border: none
+      border-radius: 6px
+      font-family 'gotham-medium'
+      margin-top: 80px
+
+      &#call
+        color: white
+        background-color rgba(255, 255, 255, 0.7)
+        margin-right: 45px
