@@ -31,25 +31,57 @@ export default class Foot {
         this.start = document.querySelector('#start')
         this.call = document.querySelector('#call')
         this.stop = document.querySelector('#stop')
+        this.popin = document.querySelector('.popin')
+
+        this.scores = document.querySelectorAll('.number')
+        this.blueScore = this.scores[0]
+        this.redScore = this.scores[1]
 
         this.init()
     }
 
     init() {
         this.listenSockets()
+        this.closePopin()
     }
 
     stopGame() {
+      this.blueScore.innerHTML = 0
+      this.redScore.innerHTML = 0
 
+      this.animateItems()
+
+      this.players = document.querySelectorAll('.player-id')
+      for (var i = 0; i < this.players.length; i++) {
+        this.players[i].value = ""
+      }
+
+      // document.getElementById("timer").remove()
+    }
+
+    countdown(minutes) {
+        var seconds = 60;
+        var mins = minutes
+        function tick() {
+            var counter = document.getElementById("timer");
+            var current_minutes = mins-1
+            seconds--;
+            counter.innerHTML =
+            current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+            if( seconds > 0 ) {
+                setTimeout(tick, 1000)
+            } else {
+                if(mins > 1){
+                   setTimeout(function () { countdown(mins - 1); }, 1000)
+                }
+            }
+        }
+        tick()
     }
 
     changeScore(sign, color) {
       this.sign = sign
       this.color = color
-
-      this.scores = document.querySelectorAll('.number')
-      this.blueScore = this.scores[0]
-      this.redScore = this.scores[1]
 
       if (this.color == 'blue') {
         if (this.sign == 'minus') {
@@ -82,14 +114,48 @@ export default class Foot {
       }
     }
 
+    showGoal(color, msg){
+      this.color = color
+      this.popin.classList.remove('blue')
+      this.popin.classList.remove('red')
+      this.popin.classList.add(this.color)
+      this.popin.classList.toggle('show')
+
+      this.popin.querySelector('.punchline').innerHTML = msg
+    }
+
+    closePopin(){
+      document.querySelector('.cross').addEventListener('click', () => {
+        console.log('ok');
+        this.popin.classList.toggle('show')
+      })
+    }
+
     listenSockets() {
+
+        this.socket.on('addGoal', function(color, msg){
+          this.showGoal(color, msg)
+          this.changeScore('plus', color)
+        }.bind(this))
+
+        this.socket.on('onStopMatch', function(color){
+          this.stopGame()
+        }.bind(this))
+
         this.socket.on('newConnection', (data) => {
-            console.log('Connected')
 
             this.start.addEventListener( 'click', () => {
               this.getId()
               this.socket.emit('onNameChange', this.player)
               this.animateItems()
+
+              //this.countdown(20)
+
+              // stop game after 20 minutes
+              setTimeout(function () {
+                this.stopGame()
+              }.bind(this), 200000);
+
             })
 
             this.call.addEventListener( 'click', () => {
@@ -97,9 +163,8 @@ export default class Foot {
             })
 
             this.stop.addEventListener( 'click', () => {
-              this.socket.emit('onStopMatch', 'match stoped')
-              this.animateItems()
               this.stopGame()
+              this.socket.emit('onStopMatch', 'match stoped')
             })
 
             var self = this
