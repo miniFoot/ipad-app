@@ -15096,19 +15096,10 @@ var Foot = (function () {
     }
   }, {
     key: 'countdown',
-    value: (function (_countdown) {
-      function countdown(_x) {
-        return _countdown.apply(this, arguments);
-      }
-
-      countdown.toString = function () {
-        return _countdown.toString();
-      };
-
-      return countdown;
-    })(function (minutes) {
+    value: function countdown(minutes) {
       var seconds = 60;
       var mins = minutes;
+      var self = this;
       function tick() {
         var counter = document.getElementById("timer");
         var current_minutes = mins - 1;
@@ -15125,13 +15116,13 @@ var Foot = (function () {
         } else {
           if (mins > 1) {
             var test2 = setTimeout(function () {
-              countdown(mins - 1);
+              self.countdown(mins - 1);
             }, 1000);
           }
         }
       }
       tick();
-    })
+    }
   }, {
     key: 'changeScore',
     value: function changeScore(sign, color) {
