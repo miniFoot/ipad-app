@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="title">
+    <link rel="apple-touch-startup-image" href="assets/images/startup-image.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="title">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/images/favicons/manifest.json">
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="assets/images/favicons/mstile-144x144.png">
+    <meta name="msapplication-config" content="assets/images/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body><img src="assets/images/logo.png" alt="logo" class="logo">
+    <h1>@babyoot</h1>
+    <div class="container">
+      <div class="team">
+        <h2 class="blue">équipe bleue</h2>
+        <div class="input-block"> 
+          <input type="text" class="player-id">
+          <input type="text" class="player-id">
+        </div>
+      </div>
+      <div class="team">
+        <h2 class="red">équipe rouge</h2>
+        <div class="input-block">
+          <input type="text" class="player-id">
+          <input type="text" class="player-id">
+        </div>
+      </div>
+      <div class="middle"></div>
+      <div class="submit-container">
+        <input type="submit" value="APPELER LES JOUEURS" id="call" class="action">
+        <input type="submit" value="DÉMARRER LA PARTIE" id="start" class="action">
+      </div>
+    </div>
+    <div class="game">
+      <div class="score blue"> <span class="number">0</span>
+        <div class="change"><img src="assets/images/minus.png" alt="change score" class="minus blue"><img src="assets/images/plus.png" alt="change score" class="plus blue"></div>
+      </div><span>-</span>
+      <div class="score red"><span class="number">0</span>
+        <div class="change"><img src="assets/images/minus.png" alt="change score" class="minus red"><img src="assets/images/plus.png" alt="change score" class="plus red"></div>
+      </div>
+      <input type="submit" value="ARRÊTER LA PARTIE" id="stop" class="action">
+    </div>
+    <div class="popin"><img src="assets/images/cross.png" alt="fermer" class="cross">
+      <div class="content">
+        <div class="title"><img src="assets/images/goal.png" alt="but" class="goal"><span>BUT !</span></div>
+        <div class="text"><img src="assets/images/logo.png" alt="logo"><span>@babyfoot</span>
+          <h2 class="punchline">But ! Integer posuere erat @VincentVacher et @EmilandDC venenatis dapibus posuere velit aliquet nunc turat.</h2>
+        </div>
+      </div>
+    </div>
+    <div id="timer"></div>
+  </body>
+  <script src="assets/js/main.js"></script>
+</html>
