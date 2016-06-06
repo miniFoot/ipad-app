@@ -30,7 +30,7 @@ export default class Foot {
         // this.blueScore = 0
         // this.redScore = 0
 
-        this.start = document.querySelector('#start')
+        this.started = document.querySelector('#start')
         this.call = document.querySelector('#call')
         this.stop = document.querySelector('#stop')
         this.popin = document.querySelector('.popin')
@@ -142,6 +142,7 @@ export default class Foot {
     listenSockets() {
 
         this.socket.on('addGoal', function(color, msg){
+          console.log("changedscore");
           this.showGoal(color, msg)
           this.changeScore('plus', color)
         }.bind(this))
@@ -152,9 +153,10 @@ export default class Foot {
 
         this.socket.on('newConnection', (data) => {
 
-            this.start.addEventListener( 'click', () => {
+            this.started.addEventListener( 'click', () => {
               this.getId()
               this.socket.emit('onNameChange', this.player)
+              this.socket.emit('onStartMatch', 'started')
               this.animateItems()
 
               this.countdown(20)
@@ -166,9 +168,6 @@ export default class Foot {
 
             })
 
-            this.start.addEventListener( 'click', () => {
-              this.socket.emit('onStartMatch', 'started')
-            })
             this.call.addEventListener( 'click', () => {
               this.socket.emit('onPlayerCall', 'user called')
             })
