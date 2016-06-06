@@ -1,6 +1,8 @@
 import io from 'socket.io-client'
 import Animation from './animation'
 
+var run = true
+
 export default class Foot {
     constructor() {
 
@@ -49,14 +51,14 @@ export default class Foot {
       this.blueScore.innerHTML = 0
       this.redScore.innerHTML = 0
 
+      run = false
+
       this.animateItems()
 
       this.players = document.querySelectorAll('.player-id')
       for (var i = 0; i < this.players.length; i++) {
         this.players[i].value = ""
       }
-
-      // document.getElementById("timer").remove()
     }
 
     countdown(minutes) {
@@ -69,10 +71,16 @@ export default class Foot {
             counter.innerHTML =
             current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
             if( seconds > 0 ) {
-                setTimeout(tick, 1000)
+                if (!run) {
+                  test = clearTimeout(test)
+                  counter.innerHTML = ""
+                  run = true
+                } else {
+                  var test = setTimeout(tick, 1000)
+                }
             } else {
                 if(mins > 1){
-                   setTimeout(function () { countdown(mins - 1); }, 1000)
+                  var test2 = setTimeout(function () { countdown(mins - 1); }, 1000)
                 }
             }
         }
@@ -149,7 +157,7 @@ export default class Foot {
               this.socket.emit('onNameChange', this.player)
               this.animateItems()
 
-              //this.countdown(20)
+              this.countdown(20)
 
               // stop game after 20 minutes
               setTimeout(function () {
