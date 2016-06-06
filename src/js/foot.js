@@ -64,6 +64,7 @@ export default class Foot {
     countdown(minutes) {
         var seconds = 60;
         var mins = minutes
+        var self = this
         function tick() {
             var counter = document.getElementById("timer");
             var current_minutes = mins-1
@@ -80,7 +81,7 @@ export default class Foot {
                 }
             } else {
                 if(mins > 1){
-                  var test2 = setTimeout(function () { countdown(mins - 1); }, 1000)
+                  var test2 = setTimeout(function () { self.countdown(mins - 1); }, 1000)
                 }
             }
         }
