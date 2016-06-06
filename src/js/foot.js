@@ -166,6 +166,9 @@ export default class Foot {
 
             })
 
+            this.start.addEventListener( 'click', () => {
+              this.socket.emit('onStartMatch', 'started')
+            })
             this.call.addEventListener( 'click', () => {
               this.socket.emit('onPlayerCall', 'user called')
             })
