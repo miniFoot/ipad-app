@@ -6,7 +6,7 @@ var run = true
 export default class Foot {
     constructor() {
 
-        this.host = 'http://localhost:8080/'
+        this.host = 'http://5.196.7.169:8080/'
 
         this.animation = new Animation()
 
@@ -130,6 +130,10 @@ export default class Foot {
       this.popin.classList.toggle('show')
 
       this.popin.querySelector('.punchline').innerHTML = msg
+
+      setTimeout(function () {
+        this.popin.classList.toggle('show')
+      }.bind(this), 8000);
     }
 
     closePopin(){
