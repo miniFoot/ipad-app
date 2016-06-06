@@ -15065,7 +15065,6 @@ var Foot = (function () {
     this.call = document.querySelector('#call');
     this.stop = document.querySelector('#stop');
     this.popin = document.querySelector('.popin');
-
     this.scores = document.querySelectorAll('.number');
     this.blueScore = this.scores[0];
     this.redScore = this.scores[1];
@@ -15214,6 +15213,8 @@ var Foot = (function () {
         });
 
         _this2.call.addEventListener('click', function () {
+          _this2.getId();
+          _this2.socket.emit('onNameChange', _this2.player);
           _this2.socket.emit('onPlayerCall', 'user called');
         });
 

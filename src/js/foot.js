@@ -34,7 +34,6 @@ export default class Foot {
         this.call = document.querySelector('#call')
         this.stop = document.querySelector('#stop')
         this.popin = document.querySelector('.popin')
-
         this.scores = document.querySelectorAll('.number')
         this.blueScore = this.scores[0]
         this.redScore = this.scores[1]
@@ -157,7 +156,7 @@ export default class Foot {
             this.started.addEventListener( 'click', () => {
               this.getId()
               this.socket.emit('onNameChange', this.player)
-              this.socket.emit('onStartMatch', 'started')
+              this.socket.emit('onStartMatch', 'started');
               this.animateItems()
 
               this.countdown(20)
@@ -170,6 +169,8 @@ export default class Foot {
             })
 
             this.call.addEventListener( 'click', () => {
+              this.getId()
+              this.socket.emit('onNameChange', this.player)
               this.socket.emit('onPlayerCall', 'user called')
             })
 
