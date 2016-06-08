@@ -53,21 +53,23 @@
         border: 3px solid white
 
     .input-block
-      width: 60%
+      width: 50%
       margin: 0 auto
+      padding-left: 20px
       position: relative;
       transition: all 0.6s ease
 
-      &:before, &:after
-        content: '@'
-        color: $green
-        position: absolute
-        left: -40px
-        top: 75px
-        font-size: 30px
+      .input-wrapper
+        position: relative
 
-      &:after
-        top: 0
+        &:before//, &:after
+          content: '@'
+          color: $green
+          position: absolute
+          left: -40px
+          top: 0px
+          font-size: 30px
+          font-family 'gotham-book'
 
       input
         display block
@@ -91,7 +93,7 @@
       padding: 20px
       border: none
       border-radius: 6px
-      font-family 'gotham-medium'
+      font-family 'gotham-bold'
       margin-top: 80px
 
       &#call

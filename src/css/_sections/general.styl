@@ -7,6 +7,15 @@ body
     position relative
     overflow hidden
 
+    &:before
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      height: 10px
+      width: 100%
+      background-color: $green
+
 body
   background: linear-gradient(135deg, rgba(59,29,76,1) 0%, rgba(59,29,76,1) 22%, rgba(0,36,82,1) 100%)
   font-family: 'gotham-book'
@@ -22,20 +31,3 @@ body
     text-align: center
     font-weight: lighter;
     font-size: 26px;
-
-  #timer
-    position: absolute
-    bottom: 5px
-    left: 50%
-    top: 60%
-    color: #fff
-    height: 100px
-    font-size: 3em
-    transform: translate(-50%, -100px)
-    opacity: 0
-    transition: all 0.4s ease
-
-    &.show-timer
-      transition: all 0.6s ease
-      transform: translate(-50%, 0)
-      opacity: 1

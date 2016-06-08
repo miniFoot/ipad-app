@@ -15,20 +15,30 @@
 
   .score
     display: inline
-    position: relative;
+    position: relative
+
+    &.blue
+      position: absolute
+      left: 25%
+      transform: translateX(-50%)
+
+    &.red
+      position: absolute
+      right: 25%
+      transform: translateX(50%)
 
     .number
-      min-width: 160px;
-      display: inline-block;
+      min-width: 160px
+      display: inline-block
 
     .change
-      position: absolute;
-      top: 25px
-      left: 35px
+      position: absolute
+      top: 60px
+      left: 25px
       height: 50px
 
       img
-        width: 30px
+        width: 40px
         margin: 0 10px
 
   span
@@ -40,7 +50,7 @@
     padding: 20px 30px
     border: none
     border-radius: 6px
-    font-family 'gotham-medium'
+    font-family 'gotham-bold'
     margin-top: 80px
     font-size: 12px
     display: block;

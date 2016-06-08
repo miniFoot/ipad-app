@@ -9,8 +9,17 @@
   opacity: 0
   visibility: hidden
 
+  &:before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    height: 10px
+    width: 100%
+    background-color: white
+
   &.show
-    animation: showPop 6s ease forwards
+    animation: showPop 8s ease forwards
 
   @keyframes showPop {
     0%{
@@ -43,7 +52,7 @@
 
   .cross
     position: absolute
-    top: 10px
+    top: 20px
     right: 10px
     width: 40px
 
@@ -115,6 +124,7 @@
         opacity: 1
         transition: all 0.6s ease
         transition-delay: 0.4s
+
     .text
       transform: translateY(0px)
       opacity: 1

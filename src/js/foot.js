@@ -1,8 +1,6 @@
 import io from 'socket.io-client'
 import Animation from './animation'
 
-var run = true
-
 export default class Foot {
     constructor() {
 
@@ -29,7 +27,7 @@ export default class Foot {
 
         // this.blueScore = 0
         // this.redScore = 0
-
+        this.players = document.querySelectorAll('.player-id')
         this.started = document.querySelector('#start')
         this.call = document.querySelector('#call')
         this.stop = document.querySelector('#stop')
@@ -50,41 +48,13 @@ export default class Foot {
       this.blueScore.innerHTML = 0
       this.redScore.innerHTML = 0
 
-      run = false
-
       this.animateItems()
 
       this.players = document.querySelectorAll('.player-id')
       for (var i = 0; i < this.players.length; i++) {
         this.players[i].value = ""
+        this.players[i].parentElement.style.display = 'block'
       }
-    }
-
-    countdown(minutes) {
-        var seconds = 60;
-        var mins = minutes
-        var self = this
-        function tick() {
-            var counter = document.getElementById("timer");
-            var current_minutes = mins-1
-            seconds--;
-            counter.innerHTML =
-            current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
-            if( seconds > 0 ) {
-                if (!run) {
-                  test = clearTimeout(test)
-                  counter.innerHTML = ""
-                  run = true
-                } else {
-                  var test = setTimeout(tick, 1000)
-                }
-            } else {
-                if(mins > 1){
-                  var test2 = setTimeout(function () { self.countdown(mins - 1); }, 1000)
-                }
-            }
-        }
-        tick()
     }
 
     changeScore(sign, color) {
@@ -113,12 +83,14 @@ export default class Foot {
     animateItems() {
       document.querySelector('.container').classList.toggle('animated');
       document.querySelector('.game').classList.toggle('show-score');
-      document.querySelector('#timer').classList.toggle('show-timer');
     }
 
     getId(){
-      this.players = document.querySelectorAll('.player-id')
+
       for (var i = 0; i < this.players.length; i++) {
+        if (this.players[i].value == "") {
+          this.players[i].parentElement.style.display = 'none'
+        }
         this.player[i].name = this.players[i].value
       }
     }
@@ -159,17 +131,17 @@ export default class Foot {
         this.socket.on('newConnection', (data) => {
 
             this.started.addEventListener( 'click', () => {
-              this.getId()
-              this.socket.emit('onNameChange', this.player)
-              this.socket.emit('onStartMatch', 'started');
-              this.animateItems()
-
-              this.countdown(20)
+              if ((this.players[0].value != "") && (this.players[2].value != "")) {
+                this.getId()
+                this.socket.emit('onNameChange', this.player)
+                this.socket.emit('onStartMatch', 'started');
+                this.animateItems()
+              }
 
               // stop game after 20 minutes
-              setTimeout(function () {
-                this.stopGame()
-              }.bind(this), 200000);
+              // setTimeout(function () {
+              //   this.stopGame()
+              // }.bind(this), 200000);
 
             })
 
