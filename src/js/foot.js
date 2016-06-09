@@ -94,6 +94,12 @@ export default class Foot {
         this.player[i].name = this.players[i].value
       }
     }
+    getName(){
+
+      for (var i = 0; i < this.players.length; i++) {
+        this.player[i].name = this.players[i].value
+      }
+    }
 
     showGoal(color, msg){
       this.color = color
@@ -146,9 +152,11 @@ export default class Foot {
             })
 
             this.call.addEventListener( 'click', () => {
-              this.getId()
-              this.socket.emit('onNameChange', this.player)
-              this.socket.emit('onPlayerCall', 'user called')
+              if ((this.players[0].value != "") && (this.players[2].value != "")){
+                this.getName()
+                this.socket.emit('onNameChange', this.player)
+                this.socket.emit('onPlayerCall', 'user called')
+              }
             })
 
             this.stop.addEventListener( 'click', () => {
